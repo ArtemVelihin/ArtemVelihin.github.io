@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrowdForAngels — Design Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3f3f3;
+            --card-bg: #ffffff;
+            --text: #1a1a1a;
+            --text-muted: #6b6b6b;
+            --border: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 24px rgba(0,0,0,0.12);
+            --radius: 12px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 48px 24px 32px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 48px;
+            flex: 1;
+        }
+
+        .card {
+            display: block;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .preview {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #e8e8e8;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .preview iframe {
+            width: 1200px;
+            height: 800px;
+            border: none;
+            transform: scale(0.25);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+
+        .card-body {
+            padding: 16px;
+        }
+
+        .card-body h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-body p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .swatches {
+            display: flex;
+            gap: 6px;
+        }
+
+        .swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 560px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CrowdForAngels — Design Options</h1>
+        <p>Visual gallery of all design directions</p>
+    </header>
+
+    <div class="grid">
+        <a class="card" href="index.html">
+            <div class="preview"><iframe src="index.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Main Landing Page</h2>
+                <p>Luxury finance — Cream, Navy, Gold</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#FAF8F2"></span>
+                    <span class="swatch" style="background:#0C1627"></span>
+                    <span class="swatch" style="background:#C5922B"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="investments.html">
+            <div class="preview"><iframe src="investments.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Investments Page</h2>
+                <p>Same luxury finance theme</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#FAF8F2"></span>
+                    <span class="swatch" style="background:#0C1627"></span>
+                    <span class="swatch" style="background:#C5922B"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-1.html">
+            <div class="preview"><iframe src="option-1.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 1 — Editorial</h2>
+                <p>Green/Amber serif newspaper feel</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#FAF7F0"></span>
+                    <span class="swatch" style="background:#1A3A2A"></span>
+                    <span class="swatch" style="background:#B8860B"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-2.html">
+            <div class="preview"><iframe src="option-2.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 2 — Modern SaaS</h2>
+                <p>Clean blue/green fintech — professional and modern</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#F7F8FC"></span>
+                    <span class="swatch" style="background:#2D5BFF"></span>
+                    <span class="swatch" style="background:#00B87A"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-3.html">
+            <div class="preview"><iframe src="option-3.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 3 — Dark Terminal</h2>
+                <p>Dark copper & green — sophisticated tech platform</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#080C10"></span>
+                    <span class="swatch" style="background:#C87941"></span>
+                    <span class="swatch" style="background:#3DBA6A"></span>
+                    <span class="swatch" style="background:#D8D2C8"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-4.html">
+            <div class="preview"><iframe src="option-4.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 4 — Organic Minimal</h2>
+                <p>Stone/Forest/Terracotta warmth</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#F5F0EB"></span>
+                    <span class="swatch" style="background:#2C4A3E"></span>
+                    <span class="swatch" style="background:#C4654A"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-5.html">
+            <div class="preview"><iframe src="option-5.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 5 — Burgundy Rose</h2>
+                <p>Rich burgundy with rose tones</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#F7EDD8"></span>
+                    <span class="swatch" style="background:#4A1528"></span>
+                    <span class="swatch" style="background:#C4876C"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-6.html">
+            <div class="preview"><iframe src="option-6.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 6 — Neon Cyberpunk</h2>
+                <p>High-contrast neon — yellow, green, pink on black</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#0A0A08"></span>
+                    <span class="swatch" style="background:#FFE234"></span>
+                    <span class="swatch" style="background:#00FF87"></span>
+                </div>
+            </div>
+        </a>
+
+        <a class="card" href="option-7.html">
+            <div class="preview"><iframe src="option-7.html" loading="lazy"></iframe></div>
+            <div class="card-body">
+                <h2>Option 7 — Art Deco</h2>
+                <p>Dark Art Deco with gold geometric</p>
+                <div class="swatches">
+                    <span class="swatch" style="background:#0F0D08"></span>
+                    <span class="swatch" style="background:#E8D5A0"></span>
+                    <span class="swatch" style="background:#C8962A"></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <footer>
+        8 design options — CrowdForAngels
+    </footer>
+</body>
+</html>

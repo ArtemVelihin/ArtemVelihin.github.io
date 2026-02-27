@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crowd for Angels — UK Crowdfunding Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0A0A08;
+  --black2: #111110;
+  --black3: #1C1C1A;
+  --yellow: #FFE234;
+  --yellow2: #FFF06A;
+  --neon: #00FF87;
+  --pink: #FF3366;
+  --text: #E8E6E0;
+  --dim: #666660;
+  --rule: #2A2A28;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:'Manrope',sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── GRAIN OVERLAY ─ */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+
+/* ── RISK ─ */
+.risk{background:var(--yellow);padding:7px 32px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.risk p{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--black);font-weight:400;letter-spacing:.02em}
+.risk a{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--black);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--black)}
+
+/* ── NAV ─ */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,8,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.nav-in{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:62px;gap:40px}
+.logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none;margin-right:auto}
+.logo .y{color:var(--yellow)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-family:'Oswald',sans-serif;font-size:13px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.btn-join{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--yellow);color:var(--black);text-decoration:none;padding:8px 18px;transition:background .15s}
+.btn-join:hover{background:var(--yellow2)}
+
+/* ── HERO ─ */
+.hero{border-bottom:1px solid var(--rule);position:relative;overflow:hidden;padding:0}
+/* big diagonal strip */
+.hero::before{content:'';position:absolute;top:-100px;right:-80px;width:45%;height:120%;background:var(--black2);transform:skewX(-4deg);z-index:0}
+.hero-in{max-width:1320px;margin:0 auto;padding:80px 40px 72px;position:relative;z-index:1;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:center}
+.hero-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.hero-label::before{content:'>';font-size:12px}
+h1{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(72px,9vw,130px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;color:var(--text);margin-bottom:28px}
+h1 .y{color:var(--yellow)}
+h1 .out{-webkit-text-stroke:1.5px var(--text);color:transparent}
+h1 .neon{color:var(--neon)}
+.hero-sub{font-size:15px;font-weight:300;color:var(--dim);max-width:460px;line-height:1.75;margin-bottom:36px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px}
+.cta-p{font-family:'Oswald',sans-serif;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--yellow);color:var(--black);text-decoration:none;padding:12px 24px;transition:background .15s}
+.cta-p:hover{background:var(--yellow2)}
+.cta-s{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text);text-decoration:none;padding:12px 24px;border:1px solid var(--rule);transition:border-color .15s}
+.cta-s:hover{border-color:var(--text)}
+.hero-meta{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--dim);display:flex;gap:20px;flex-wrap:wrap}
+.hero-meta .hl{color:var(--yellow)}
+
+/* DATA PANEL */
+.data-panel{border:1px solid var(--rule);background:var(--black2)}
+.dp-top{border-bottom:1px solid var(--rule);padding:14px 18px;display:flex;align-items:center;gap:8px}
+.dp-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow)}
+.dp-live{display:flex;align-items:center;gap:5px;margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--neon)}
+.dp-live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--neon);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.dp-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)}
+.dp-row:last-child{border-bottom:none}
+.dp-cell{padding:16px 18px;border-right:1px solid var(--rule)}
+.dp-cell:last-child{border-right:none}
+.dp-key{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.dp-val{font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.01em;line-height:1}
+.dp-val.y{color:var(--yellow)}
+.dp-val.g{color:var(--neon)}
+.dp-val.w{color:var(--text)}
+.dp-unit{font-family:'Space Mono',monospace;font-size:8.5px;color:var(--dim);margin-top:5px}
+.dp-ticker{padding:10px 18px;overflow:hidden;border-top:1px solid var(--rule)}
+.dp-tk-in{font-family:'Space Mono',monospace;font-size:9px;color:var(--dim);display:inline-block;animation:tk 18s linear infinite;white-space:nowrap}
+.dp-tk-in .g{color:var(--neon);margin:0 4px}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* PRESS */
+.press{background:var(--black2);border-bottom:1px solid var(--rule);padding:0;overflow:hidden}
+.press-track{display:flex;align-items:center;gap:48px;padding:16px 0;animation:pt 22s linear infinite;width:max-content}
+.press-track span{font-family:'Oswald',sans-serif;font-weight:700;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--text);opacity:.2;white-space:nowrap}
+@keyframes pt{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:80px 0;border-bottom:1px solid var(--rule)}
+.sec-in{max-width:1320px;margin:0 auto;padding:0 40px}
+.sec-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.sec-h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(40px,5vw,72px);letter-spacing:-.01em;text-transform:uppercase;color:var(--text);line-height:.95;margin-bottom:32px}
+.sec-h2 .y{color:var(--yellow)}
+.sec-sub{font-size:14px;font-weight:300;color:var(--dim);max-width:520px;line-height:1.7;margin-bottom:48px}
+
+/* PITCH TABLE */
+.pt-filters{display:flex;gap:2px;margin-bottom:24px}
+.pf-btn{font-family:'Oswald',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;background:transparent;color:var(--dim);border:1px solid var(--rule);cursor:pointer;transition:all .15s;font-size:12px}
+.pf-btn.active,.pf-btn:hover{background:var(--yellow);color:var(--black);border-color:var(--yellow)}
+.pitch-list{display:flex;flex-direction:column;gap:2px}
+.pitch-row{display:grid;grid-template-columns:28px 1fr 160px 80px 80px 80px 100px;gap:0;align-items:center;background:var(--black2);border:1px solid var(--rule);padding:18px 20px;transition:background .15s;cursor:default}
+.pitch-row:hover{background:var(--black3)}
+.pr-idx{font-family:'Space Mono',monospace;font-size:10px;color:var(--dim)}
+.pr-main{}
+.pr-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.02em;color:var(--text);margin-bottom:2px}
+.pr-desc{font-size:11px;color:var(--dim);font-weight:300}
+.pr-type{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;padding:3px 8px;text-align:center}
+.t-bond{border:1px solid var(--yellow);color:var(--yellow)}
+.t-share{border:1px solid var(--neon);color:var(--neon)}
+.pr-num{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--text)}
+.pr-num.y{color:var(--yellow)}
+.pr-num.g{color:var(--neon)}
+.pr-status{font-family:'Space Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:.06em}
+
+/* OFFERINGS */
+.off-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.off{background:var(--black2);border:1px solid var(--rule);padding:44px;position:relative;overflow:hidden}
+.off::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.off.bond::before{background:var(--yellow)}
+.off.share::before{background:var(--neon)}
+.off-big{font-family:'Oswald',sans-serif;font-weight:700;font-size:80px;letter-spacing:-.02em;text-transform:uppercase;line-height:.9;margin-bottom:16px}
+.off.bond .off-big{color:var(--yellow)}
+.off.share .off-big{color:var(--neon)}
+.off-title{font-family:'Oswald',sans-serif;font-weight:600;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:18px}
+.off-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.off-list li{font-size:13px;font-weight:300;color:var(--dim);padding-left:18px;position:relative;line-height:1.5}
+.off-list li::before{content:'→';position:absolute;left:0;font-size:11px;font-weight:700}
+.off.bond .off-list li::before{color:var(--yellow)}
+.off.share .off-list li::before{color:var(--neon)}
+.btn-off{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:11px 22px;display:inline-block;transition:all .15s}
+.btn-off.yellow{background:var(--yellow);color:var(--black)}
+.btn-off.yellow:hover{background:var(--yellow2)}
+.btn-off.green{background:var(--neon);color:var(--black)}
+.btn-off.green:hover{background:#33FFA0}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.tm{background:var(--black2);border:1px solid var(--rule);padding:28px;transition:background .15s}
+.tm:hover{background:var(--black3)}
+.tm-init{font-family:'Oswald',sans-serif;font-weight:700;font-size:48px;letter-spacing:.02em;text-transform:uppercase;color:var(--yellow);opacity:.3;line-height:1;margin-bottom:12px}
+.tm-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--text);margin-bottom:4px}
+.tm-role{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px}
+.tm-bio{font-size:12px;font-weight:300;color:var(--dim);line-height:1.6}
+
+/* MANIFESTO */
+.manifesto{padding:96px 0;position:relative;overflow:hidden}
+.manifesto::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(255,226,52,.015) 40px,rgba(255,226,52,.015) 41px)}
+.mn-in{max-width:1320px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.mn-q{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(52px,6vw,88px);letter-spacing:-.01em;text-transform:uppercase;line-height:.92;color:var(--text)}
+.mn-q .y{color:var(--yellow)}
+.mn-q .out{-webkit-text-stroke:1.5px var(--text);color:transparent}
+.mn-right{}
+.mn-p{font-size:14px;font-weight:300;color:var(--dim);line-height:1.8;margin-bottom:16px}
+.mn-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px}
+.mn-stat{background:var(--black2);border:1px solid var(--rule);padding:20px}
+.mn-stat .n{font-family:'Oswald',sans-serif;font-weight:700;font-size:32px;letter-spacing:-.01em;color:var(--yellow)}
+.mn-stat .l{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:4px}
+
+/* CONTACT */
+.contact{padding:0;border-top:1px solid var(--rule)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr}
+.ct-left{padding:64px 40px 64px calc((100vw - 1320px)/2 + 40px);border-right:1px solid var(--rule)}
+.ct-left h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:52px;letter-spacing:-.01em;text-transform:uppercase;color:var(--text);margin-bottom:36px;line-height:.95}
+.ct-left h2 .y{color:var(--yellow)}
+.ci-list{display:flex;flex-direction:column;gap:20px}
+.ci{display:flex;gap:14px}
+.ci-k{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);width:64px;flex-shrink:0;padding-top:1px}
+.ci-v{font-size:14px;color:var(--text)}
+.ci-v a{color:var(--dim);text-decoration:none;transition:color .15s}
+.ci-v a:hover{color:var(--yellow)}
+.ct-right{background:var(--yellow);padding:64px 56px 64px 40px;display:flex;flex-direction:column;justify-content:center;gap:22px}
+.ct-right h3{font-family:'Oswald',sans-serif;font-weight:700;font-size:48px;letter-spacing:-.01em;text-transform:uppercase;color:var(--black);line-height:.95}
+.ct-right p{font-size:13.5px;font-weight:400;color:rgba(10,10,8,.65);line-height:1.7}
+.ct-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-blk{font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--black);color:var(--yellow);text-decoration:none;padding:12px 22px;transition:background .15s}
+.btn-blk:hover{background:var(--black2)}
+.btn-blk-out{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--black);text-decoration:none;padding:12px 22px;border:2px solid rgba(10,10,8,.3);transition:border-color .15s}
+.btn-blk-out:hover{border-color:var(--black)}
+
+/* RISK */
+.risk-sec{background:var(--black2);border-top:1px solid var(--rule);padding:56px 0}
+.rs-in{max-width:900px;margin:0 auto;padding:0 40px}
+.rs-in h2{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;letter-spacing:.06em;text-transform:uppercase;color:var(--text);margin-bottom:20px}
+.rs-in p{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);line-height:1.75;margin-bottom:12px;letter-spacing:.01em}
+.rs-in strong{color:var(--text);font-weight:700}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--rule);padding:56px 0 28px}
+.ft-in{max-width:1320px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.ft-brand .ft-logo{font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);display:block;margin-bottom:12px}
+.ft-brand .ft-logo .y{color:var(--yellow)}
+.ft-brand p{font-size:11.5px;font-weight:300;color:var(--dim);line-height:1.7;font-family:'Manrope',sans-serif}
+.ft-col h4{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:12px;color:var(--dim);text-decoration:none;font-family:'Manrope',sans-serif;transition:color .15s}
+.ft-col a:hover{color:var(--text)}
+.ft-btm{max-width:1320px;margin:0 auto;padding:20px 40px 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-btm p{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:#333;text-transform:uppercase}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+@media(max-width:900px){
+  .hero-in,.mn-in,.ct-grid,.ft-in{grid-template-columns:1fr}
+  .hero::before{display:none}
+  .off-grid,.team-grid{grid-template-columns:1fr}
+  nav .nav-links{display:none}
+  .ct-left{padding:48px 24px}
+  .ct-right{padding:48px 24px}
+}
+</style>
+</head>
+<body>
+
+<div class="risk">
+  <p>⚠ Don't invest unless you're prepared to lose all the money you invest. High-risk investment.</p>
+  <a href="#">2-min risk summary →</a>
+</div>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="logo">Crowd<span class="y">/</span>Angels</a>
+    <ul class="nav-links">
+      <li><a href="#investments">Investments</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#" class="btn-join">Join Free</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="hero-label rv">FCA Authorised Platform · Est. 1995</div>
+      <h1 class="rv d1">
+        EARN<br>
+        <span class="y">UP TO</span><br>
+        <span class="out">7%</span><br>
+        <span class="neon">P.A.</span>
+      </h1>
+      <p class="hero-sub rv d2">Crowd for Angels connects UK investors with exceptional companies through Crowd Bonds and Share Offerings. Tax-free via IF-ISA. Capital at risk.</p>
+      <div class="hero-ctas rv d3">
+        <a href="#investments" class="cta-p">View Investments</a>
+        <a href="#how" class="cta-s">How It Works</a>
+      </div>
+      <div class="hero-meta rv d3">
+        FCA_REF: <span class="hl">176508</span> &nbsp;·&nbsp;
+        CO: <span class="hl">03064807</span> &nbsp;·&nbsp;
+        EST: <span class="hl">1995</span>
+      </div>
+    </div>
+    <div class="data-panel rv d2">
+      <div class="dp-top">
+        <span class="dp-label">Platform Data</span>
+        <div class="dp-live">LIVE</div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-cell">
+          <div class="dp-key">Max Bond Return</div>
+          <div class="dp-val y">7%</div>
+          <div class="dp-unit">per annum · secured</div>
+        </div>
+        <div class="dp-cell">
+          <div class="dp-key">SEIS Relief</div>
+          <div class="dp-val g">50%</div>
+          <div class="dp-unit">qualifying investments</div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-cell">
+          <div class="dp-key">Min Investment</div>
+          <div class="dp-val w">£25</div>
+          <div class="dp-unit">card · bank · bitcoin</div>
+        </div>
+        <div class="dp-cell">
+          <div class="dp-key">EIS Relief</div>
+          <div class="dp-val g">30%</div>
+          <div class="dp-unit">qualifying shares</div>
+        </div>
+      </div>
+      <div class="dp-row">
+        <div class="dp-cell">
+          <div class="dp-key">ISA Wrapper</div>
+          <div class="dp-val y">IF</div>
+          <div class="dp-unit">innovative finance</div>
+        </div>
+        <div class="dp-cell">
+          <div class="dp-key">Max Term</div>
+          <div class="dp-val w">2yr</div>
+          <div class="dp-unit">short duration bonds</div>
+        </div>
+      </div>
+      <div class="dp-ticker">
+        <div class="dp-tk-in">VERDITEK<span class="g"> 7% </span>BOND · PHENOMENON<span class="g"> 8% </span>BOND · EXPLANAR<span class="g"> 12% </span>· GREEN MILES<span class="g"> SEIS </span>· ESALE<span class="g"> EIS </span>&nbsp;&nbsp;&nbsp;VERDITEK<span class="g"> 7% </span>BOND · PHENOMENON<span class="g"> 8% </span>BOND · EXPLANAR<span class="g"> 12% </span>· GREEN MILES<span class="g"> SEIS </span>· ESALE<span class="g"> EIS </span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<div class="press">
+  <div class="press-track">
+    <span>Forbes</span><span>The Guardian</span><span>City A.M.</span><span>CoinTelegraph</span><span>The Telegraph</span><span>Yahoo Finance</span><span>Fintech Times</span>
+    <span>Forbes</span><span>The Guardian</span><span>City A.M.</span><span>CoinTelegraph</span><span>The Telegraph</span><span>Yahoo Finance</span><span>Fintech Times</span>
+  </div>
+</div>
+
+<!-- INVESTMENTS -->
+<section class="sec" id="investments">
+  <div class="sec-in">
+    <div class="sec-tag rv">// Investment Opportunities</div>
+    <h2 class="sec-h2 rv d1">RECENT <span class="y">PITCHES</span></h2>
+    <p class="sec-sub rv d1">All pitches completed. Register to view current live investment opportunities.</p>
+    <div class="pt-filters rv d2">
+      <button class="pf-btn active" onclick="filter('all',this)">All</button>
+      <button class="pf-btn" onclick="filter('bond',this)">Bonds</button>
+      <button class="pf-btn" onclick="filter('share',this)">Shares</button>
+    </div>
+    <div class="pitch-list rv d2">
+      <div class="pitch-row" data-t="bond">
+        <div class="pr-idx">01</div>
+        <div class="pr-main"><div class="pr-name">Verditek PLC</div><div class="pr-desc">AIM-listed clean tech energy solutions</div></div>
+        <div><span class="pr-type t-bond">Bond</span></div>
+        <div class="pr-num y">£500k</div>
+        <div class="pr-num y">7%</div>
+        <div class="pr-num">2yr</div>
+        <div class="pr-status">Completed</div>
+      </div>
+      <div class="pitch-row" data-t="bond">
+        <div class="pr-idx">02</div>
+        <div class="pr-main"><div class="pr-name">Phenomenon One Communications</div><div class="pr-desc">Profitable web-based telecoms company</div></div>
+        <div><span class="pr-type t-bond">Bond</span></div>
+        <div class="pr-num y">£250k</div>
+        <div class="pr-num y">8%</div>
+        <div class="pr-num">1yr</div>
+        <div class="pr-status">Completed</div>
+      </div>
+      <div class="pitch-row" data-t="bond">
+        <div class="pr-idx">03</div>
+        <div class="pr-main"><div class="pr-name">Explanar Ltd</div><div class="pr-desc">World-renowned golf training aid</div></div>
+        <div><span class="pr-type t-bond">Bond</span></div>
+        <div class="pr-num y">£50k</div>
+        <div class="pr-num y">12%</div>
+        <div class="pr-num">2yr</div>
+        <div class="pr-status">Completed</div>
+      </div>
+      <div class="pitch-row" data-t="share">
+        <div class="pr-idx">04</div>
+        <div class="pr-main"><div class="pr-name">Green Miles Tech (CNPPS)</div><div class="pr-desc">Carbon-negative permeable pavement</div></div>
+        <div><span class="pr-type t-share">Share</span></div>
+        <div class="pr-num">£100k</div>
+        <div class="pr-num g">25%</div>
+        <div class="pr-num g">SEIS</div>
+        <div class="pr-status">Completed</div>
+      </div>
+      <div class="pitch-row" data-t="share">
+        <div class="pr-idx">05</div>
+        <div class="pr-main"><div class="pr-name">eSale (UK) Ltd.</div><div class="pr-desc">Profitable online estate agency UK</div></div>
+        <div><span class="pr-type t-share">Share</span></div>
+        <div class="pr-num">£90k</div>
+        <div class="pr-num g">23%</div>
+        <div class="pr-num g">EIS</div>
+        <div class="pr-status">Completed</div>
+      </div>
+      <div class="pitch-row" data-t="share">
+        <div class="pr-idx">06</div>
+        <div class="pr-main"><div class="pr-name">Videogram Worldwide</div><div class="pr-desc">Greeting card & gifting platform</div></div>
+        <div><span class="pr-type t-share">Share</span></div>
+        <div class="pr-num">£100k</div>
+        <div class="pr-num g">20.1%</div>
+        <div class="pr-num g">SEIS</div>
+        <div class="pr-status">Completed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="sec" id="how">
+  <div class="sec-in">
+    <div class="sec-tag rv">// How It Works</div>
+    <h2 class="sec-h2 rv d1">TWO PATHS<br>TO <span class="y">RETURNS</span></h2>
+    <div class="off-grid rv d2">
+      <div class="off bond">
+        <div class="off-big">01</div>
+        <div class="off-title">Crowd Bonds</div>
+        <ul class="off-list">
+          <li>Up to 7% per annum, secured on assets</li>
+          <li>Short terms — many under 2 years</li>
+          <li>Tax-free via Innovative Finance ISA</li>
+          <li>Secondary marketplace for early exit</li>
+          <li>Quarterly interest on select pitches</li>
+        </ul>
+        <a href="#" class="btn-off yellow">Explore Bonds →</a>
+      </div>
+      <div class="off share">
+        <div class="off-big">02</div>
+        <div class="off-title">Share Offerings</div>
+        <ul class="off-list">
+          <li>Access early-stage UK growth companies</li>
+          <li>Invest from £25 — card, bank or Bitcoin</li>
+          <li>Up to 50% SEIS or 30% EIS tax relief</li>
+          <li>Face-to-face due diligence on every pitch</li>
+          <li>Loss relief against income tax if needed</li>
+        </ul>
+        <a href="#" class="btn-off green">Explore Shares →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec" id="team">
+  <div class="sec-in">
+    <div class="sec-tag rv">// The Team</div>
+    <h2 class="sec-h2 rv d1">PEOPLE YOU<br>CAN <span class="y">TRUST</span></h2>
+    <div class="team-grid rv d2">
+      <div class="tm"><div class="tm-init">PM</div><div class="tm-name">Phil Millar</div><div class="tm-role">Director</div><div class="tm-bio">FCA-approved. CME Group, HSBC, Irish Stock Exchange. MiFID II, EMIR, Dodd-Frank specialist.</div></div>
+      <div class="tm"><div class="tm-init">RG</div><div class="tm-name">Richard Gill</div><div class="tm-role">Compliance Officer</div><div class="tm-bio">CFA. King's College London. Smaller companies research. FCA compliance since 2015.</div></div>
+      <div class="tm"><div class="tm-init">KD</div><div class="tm-name">Kenrick De Nazareth</div><div class="tm-role">Financial Officer</div><div class="tm-bio">BA Hons Business & Finance, Westminster. Investment analysis background.</div></div>
+      <div class="tm"><div class="tm-init">AC</div><div class="tm-name">Anabel Castillo</div><div class="tm-role">Financial Analyst</div><div class="tm-bio">MSc Financial Management, Northumbria. International treasury experience.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="about">
+  <div class="mn-in">
+    <div class="rv">
+      <div class="mn-q">WE DO<br>IT <span class="y">WELL.</span><br>WE DO<br>IT <span class="out">RIGHT.</span></div>
+    </div>
+    <div class="rv d1">
+      <p class="mn-p">Crowd for Angels is an established UK crowdfunding platform based in the City of London, authorised and regulated by the Financial Conduct Authority. Incorporated 1995. We fly worldwide to meet every company face-to-face before listing.</p>
+      <p class="mn-p">Our name mirrors our vision: to raise Angels from our Crowd — offering investors the opportunity to be active participants, not passive observers.</p>
+      <div class="mn-stats">
+        <div class="mn-stat"><div class="n">1995</div><div class="l">Year Established</div></div>
+        <div class="mn-stat"><div class="n">7% p.a.</div><div class="l">Max Bond Return</div></div>
+        <div class="mn-stat"><div class="n">50%</div><div class="l">Max Tax Relief</div></div>
+        <div class="mn-stat"><div class="n">£25</div><div class="l">Min Investment</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="ct-grid">
+    <div class="ct-left rv">
+      <h2>GET IN<br><span class="y">TOUCH</span></h2>
+      <div class="ci-list">
+        <div class="ci"><div class="ci-k">Address</div><div class="ci-v">The Fuel Tank — B110<br>8–12 Creekside Deptford<br>SE8 3DX, London</div></div>
+        <div class="ci"><div class="ci-k">Phone</div><div class="ci-v"><a href="tel:+447432304731">+44 7432 304731</a></div></div>
+        <div class="ci"><div class="ci-k">Email</div><div class="ci-v"><a href="mailto:info@crowdforangels.com">info@crowdforangels.com</a></div></div>
+        <div class="ci"><div class="ci-k">Social</div><div class="ci-v">Twitter · LinkedIn<br>Facebook · Telegram</div></div>
+      </div>
+    </div>
+    <div class="ct-right rv d1">
+      <h3>Become an Angel Investor</h3>
+      <p>Open a free account in minutes. Access current UK investment opportunities through Crowd Bonds and Share Offerings. FCA authorised, ref. 176508. Capital at risk.</p>
+      <div class="ct-btns">
+        <a href="#" class="btn-blk">Open Free Account</a>
+        <a href="#" class="btn-blk-out">Learn About IF-ISA</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<div class="risk-sec">
+  <div class="rs-in">
+    <h2>// Risk Warning</h2>
+    <p><strong>Capital at Risk:</strong> Investing in small companies involves significant risks including illiquidity, loss of investment, lack of dividends, and equity dilution.</p>
+    <p><strong>No FSCS:</strong> Investments on this platform are not covered by the Financial Services Compensation Scheme.</p>
+    <p><strong>Tax Relief:</strong> SEIS/EIS depends on individual circumstances and may change. Seek independent advice.</p>
+    <p>Approved by Crowd for Angels (UK) Limited (Co. <strong>03064807</strong>), authorised and regulated by the FCA (Ref. <strong>176508</strong>).</p>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <span class="ft-logo">Crowd<span class="y">/</span>Angels</span>
+      <p>FCA authorised UK crowdfunding platform. Company No. 03064807. Reference 176508. Incorporated 1995, City of London.</p>
+    </div>
+    <div class="ft-col"><h4>Investors</h4><ul><li><a href="#">Investments</a></li><li><a href="#">Crowd Bonds</a></li><li><a href="#">IF-ISA</a></li><li><a href="#">SEIS/EIS</a></li></ul></div>
+    <div class="ft-col"><h4>Companies</h4><ul><li><a href="#">Raise Funds</a></li><li><a href="#">Fees</a></li><li><a href="#">Due Diligence</a></li></ul></div>
+    <div class="ft-col"><h4>About</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Team</a></li><li><a href="#">Risk Warning</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="ft-btm">
+    <p>© 2024 Crowd for Angels (UK) Limited</p>
+    <p>FCA Ref. 176508 · Capital at Risk</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+function filter(t,btn){
+  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pitch-row').forEach(r=>{
+    r.style.display=(t==='all'||r.dataset.t===t)?'':'none';
+  });
+}
+</script>
+</body>
+</html>

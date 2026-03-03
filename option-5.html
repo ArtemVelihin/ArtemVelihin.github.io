@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crowd for Angels — UK Crowdfunding Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700;900&family=Manrope:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #F1EEE6;
+  --sand-mid: #E7E2D7;
+  --sand-dark: #DAD3C5;
+  --white: #FAFAF8;
+  --navy: #0A1728;
+  --navy-mid: #162640;
+  --navy-light: #243A5A;
+  --slate: #4B6280;
+  --slate-pale: #EDF1F6;
+  --accent: #2E50D4;
+  --accent-mid: #3E62E8;
+  --accent-pale: #EEF2FC;
+  --accent-border: #BCC9F5;
+  --teal: #1A7A65;
+  --teal-pale: #E3F2EF;
+  --teal-border: #B8DDD7;
+  --text: #0D1520;
+  --text-mid: #2E3D50;
+  --text-muted: #6E7D8E;
+  --text-dim: #A8B4BF;
+  --border: #D8D2C8;
+  --border-light: #EAE5DD;
+  --border-strong: #BFB8AC;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--sand);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── RISK BANNER ─── */
+.risk-banner {
+  background: var(--navy);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 9px 20px;
+  font-size: 11.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  font-family: 'Manrope', sans-serif;
+}
+.risk-banner a {
+  color: rgba(62,98,232,0.85);
+  text-decoration: none;
+  font-weight: 500;
+}
+.risk-banner a:hover { color: var(--accent-mid); text-decoration: underline; }
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(241,238,230,0.92);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  gap: 40px;
+}
+.logo {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.logo .dot { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  flex: 1;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.15s;
+  font-family: 'Manrope', sans-serif;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-ctas {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+.btn-nav-ghost {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 5px;
+  border: 1px solid var(--border-strong);
+  transition: border-color 0.15s, color 0.15s;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.01em;
+}
+.btn-nav-ghost:hover { border-color: var(--navy); color: var(--navy); }
+.btn-nav-solid {
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--navy);
+  color: var(--sand);
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.btn-nav-solid:hover { background: var(--navy-mid); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  min-height: 580px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Left: sand side */
+.hero-left {
+  padding: 80px 64px 80px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+/* Subtle horizontal rules texture */
+.hero-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--border-light) 1px, transparent 1px);
+  background-size: 100% 52px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-left > * { position: relative; z-index: 1; }
+
+/* Right: dark panel */
+.hero-right {
+  background: var(--navy);
+  border-left: 1px solid var(--border);
+  padding: 48px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+/* Diagonal hatch on dark panel */
+.hero-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255,255,255,0.018) 0,
+    rgba(255,255,255,0.018) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+/* Amber glow orb top-left */
+.hero-right::after {
+  content: '';
+  position: absolute;
+  top: -80px; left: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,136,10,0.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Left side elements ── */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: var(--teal-pale);
+  border: 1px solid var(--teal-border);
+  padding: 5px 12px;
+  border-radius: 3px;
+  margin-bottom: 28px;
+  width: fit-content;
+}
+.hero-tag::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+.hero-h1 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 3.6vw, 56px);
+  line-height: 1.05;
+  color: var(--navy);
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+}
+.hero-h1 .num {
+  color: var(--accent);
+  display: inline-block;
+  position: relative;
+}
+/* Underline rule on the number */
+.hero-h1 .num::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 0;
+  width: 100%; height: 3px;
+  background: var(--accent);
+  opacity: 0.35;
+}
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 440px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.cta-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--navy);
+  color: var(--sand);
+  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.15s;
+}
+.cta-main:hover { background: var(--navy-mid); transform: translateY(-1px); }
+.cta-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border-strong);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.15s, color 0.15s;
+}
+.cta-outline:hover { border-color: var(--navy); color: var(--navy); }
+
+/* ── Right side: terminal data panel ── */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.terminal-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(241,238,230,0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.terminal-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Data rows */
+.terminal-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 6px;
+  overflow: hidden;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.t-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: background 0.15s;
+  cursor: default;
+}
+.t-row:last-child { border-bottom: none; }
+.t-row:hover { background: rgba(255,255,255,0.03); }
+.t-row-label {
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(241,238,230,0.38);
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+.t-row-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-align: right;
+}
+.t-row-badge {
+  font-family: 'Manrope', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+.t-val-amber { color: var(--accent-mid); }
+.t-val-teal { color: #5ABBA8; }
+.t-val-sand { color: rgba(241,238,230,0.75); }
+.t-badge-amber { background: rgba(184,136,10,0.18); color: var(--accent-mid); }
+.t-badge-teal { background: rgba(26,122,101,0.18); color: #5ABBA8; }
+
+/* Bottom trust line */
+.terminal-foot {
+  margin-top: 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  color: rgba(241,238,230,0.2);
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Trust line below left ── */
+.trust-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  font-weight: 400;
+  font-family: 'Manrope', sans-serif;
+}
+.trust-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(26,122,101,0.6);
+}
+
+/* kpi-badge kept for badge-slate usage elsewhere */
+.kpi-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.06em;
+  font-family: 'Manrope', sans-serif;
+}
+.badge-acc { background: var(--accent-pale); color: var(--accent); }
+.badge-teal { background: var(--teal-pale); color: var(--teal); }
+.badge-slate { background: var(--slate-pale); color: var(--slate); }
+
+/* ─── PRESS STRIP ─── */
+.press-section {
+  background: var(--sand-mid);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+}
+.press-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+.press-lbl {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  white-space: nowrap;
+  font-family: 'Manrope', sans-serif;
+  flex-shrink: 0;
+}
+.press-names {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.press-n {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  opacity: 0.18;
+  transition: opacity 0.2s;
+  cursor: default;
+}
+.press-n:hover { opacity: 0.5; }
+
+/* ─── SECTION LAYOUT ─── */
+.section {
+  padding: 88px 0;
+}
+.section-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  gap: 32px;
+}
+.section-left {}
+.section-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-family: 'Manrope', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-eyebrow::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--accent);
+}
+.section-h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 36px);
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.section-sub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 380px;
+  line-height: 1.75;
+  text-align: right;
+  flex-shrink: 0;
+}
+/* Standalone sub (full width) */
+.section-sub-full {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: 40px;
+}
+
+/* ─── FILTER TABS ─── */
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+  position: sticky;
+  top: 60px;
+  z-index: 10;
+  background: var(--sand);
+  padding-top: 16px;
+}
+.filters {
+  display: flex;
+  gap: 0;
+}
+.filter-btn {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s;
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.02em;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.filter-btn.active {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+.filter-btn:hover:not(.active) { color: var(--text); }
+.filter-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dim);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─── PITCHES GRID ─── */
+.pitches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.pitch-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.22s, transform 0.22s, border-color 0.22s;
+  cursor: pointer;
+}
+.pitch-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(10,23,40,0.08);
+}
+.pitch-card[data-type="bond"]:hover { border-color: var(--accent-border); }
+.pitch-card[data-type="share"]:hover { border-color: var(--teal-border); }
+
+/* Top accent strip */
+.card-strip {
+  height: 3px;
+}
+.pitch-card[data-type="bond"] .card-strip { background: var(--accent); }
+.pitch-card[data-type="share"] .card-strip { background: var(--teal); }
+
+.card-body { padding: 20px 20px 18px; }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.type-chip {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 2px;
+  font-family: 'Manrope', sans-serif;
+}
+.chip-bond { background: var(--accent-pale); color: var(--accent); }
+.chip-share { background: var(--teal-pale); color: var(--teal); }
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.card-name {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.card-desc {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+/* Data metrics — table style */
+.card-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 12px;
+  border-right: 1px solid var(--border-light);
+  background: var(--sand);
+}
+.metric-box:last-child { border-right: none; }
+.metric-box .lbl {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-family: 'Manrope', sans-serif;
+}
+.metric-box .val {
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* ─── HOW IT WORKS ─── */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.how-card {
+  border-radius: 8px;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.how-card.bonds {
+  background: var(--white);
+}
+.how-card.shares {
+  background: var(--white);
+}
+/* Left colored border */
+.how-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+}
+.how-card.bonds::before { background: var(--accent); }
+.how-card.shares::before { background: var(--teal); }
+/* Big ghost number */
+.how-card-num {
+  position: absolute;
+  top: 16px; right: 24px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  opacity: 0.05;
+  color: var(--navy);
+  pointer-events: none;
+  user-select: none;
+}
+.how-card-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: 'Manrope', sans-serif;
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+.how-card.bonds .how-card-tag { background: var(--accent-pale); color: var(--accent); }
+.how-card.shares .how-card-tag { background: var(--teal-pale); color: var(--teal); }
+.how-card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.how-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+.how-list li {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-mid);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.55;
+}
+.how-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+.how-card.bonds .how-list li::before { color: var(--accent); }
+.how-card.shares .how-list li::before { color: var(--teal); }
+.how-card-cta {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  padding: 10px 22px;
+  border-radius: 5px;
+  letter-spacing: 0.02em;
+  transition: box-shadow 0.15s, transform 0.15s;
+  position: relative;
+  z-index: 1;
+}
+.how-card-cta:hover { transform: translateY(-1px); }
+.how-card.bonds .how-card-cta { background: var(--accent); color: white; }
+.how-card.bonds .how-card-cta:hover { box-shadow: 0 6px 18px rgba(192,91,58,0.3); }
+.how-card.shares .how-card-cta { background: var(--teal); color: white; }
+.how-card.shares .how-card-cta:hover { box-shadow: 0 6px 18px rgba(26,122,101,0.25); }
+
+/* ─── TEAM ─── */
+.team-section {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 88px 0;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.team-card {
+  background: var(--white);
+  padding: 32px 24px;
+  transition: background 0.18s;
+}
+.team-card:hover { background: var(--sand); }
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0;
+  color: white;
+}
+.av-navy { background: var(--navy); }
+.av-terra { background: var(--accent); }
+.av-teal { background: var(--teal); }
+.av-slate { background: var(--slate); }
+.team-name {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.team-role {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-family: 'Manrope', sans-serif;
+}
+.team-bio {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ─── ABOUT BANNER ─── */
+.about-banner {
+  background: var(--navy);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle diagonal lines */
+.about-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.015) 0,
+      rgba(255,255,255,0.015) 1px,
+      transparent 0,
+      transparent 50%
+    );
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+/* Glow */
+.about-banner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,91,58,0.1) 0%, transparent 65%);
+  pointer-events: none;
+}
+.about-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.about-tagline {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 48px);
+  color: var(--sand);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.about-tagline .hl { color: var(--accent-mid); }
+.about-p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(241,238,230,0.5);
+  line-height: 1.85;
+  margin-bottom: 24px;
+}
+.fca-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(192,91,58,0.12);
+  border: 1px solid rgba(192,91,58,0.28);
+  padding: 9px 16px;
+  border-radius: 4px;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: rgba(241,238,230,0.65);
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.03em;
+}
+.about-numbers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.about-num {
+  background: rgba(255,255,255,0.04);
+  padding: 28px 24px;
+  transition: background 0.18s;
+}
+.about-num:hover { background: rgba(255,255,255,0.07); }
+.about-num .n {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.about-num .l {
+  font-size: 10px;
+  color: rgba(241,238,230,0.3);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-family: 'Manrope', sans-serif;
+}
+.n-sand { color: var(--sand); }
+.n-acc { color: var(--accent-mid); }
+.n-teal { color: #5ABBA8; }
+.n-warm { color: #C4A060; }
+
+/* ─── CONTACT ─── */
+.contact-section {
+  padding: 88px 0;
+  background: var(--sand);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+.contact-left h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  color: var(--navy);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+.contact-left > p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 36px;
+}
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--white);
+  transition: background 0.15s;
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-item:hover { background: var(--sand); }
+.c-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--sand);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.c-text .lbl {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2px;
+  font-family: 'Manrope', sans-serif;
+}
+.c-text .val {
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--text-mid);
+}
+.c-text .val a { color: var(--accent); text-decoration: none; }
+.c-text .val a:hover { text-decoration: underline; }
+
+/* Join card */
+.join-card {
+  background: var(--navy);
+  border-radius: 8px;
+  padding: 44px;
+  color: var(--sand);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.join-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--teal));
+}
+/* Big ghost number bg */
+.join-card::after {
+  content: '→';
+  position: absolute;
+  bottom: -24px;
+  right: 24px;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  font-size: 120px;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.join-card h3 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+  max-width: 280px;
+}
+.join-card p {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(241,238,230,0.55);
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
+.join-btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+}
+.btn-acc {
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Manrope', sans-serif;
+  transition: background 0.15s;
+}
+.btn-acc:hover { background: var(--accent-mid); }
+.btn-sand-ghost {
+  background: transparent;
+  color: rgba(241,238,230,0.6);
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 5px;
+  border: 1px solid rgba(241,238,230,0.2);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: 'Manrope', sans-serif;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-sand-ghost:hover { border-color: rgba(241,238,230,0.5); color: var(--sand); }
+
+/* ─── RISK ─── */
+.risk-section {
+  background: var(--sand-mid);
+  border-top: 1px solid var(--border);
+  padding: 48px 0;
+}
+.risk-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+.risk-inner h2 {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--text-mid);
+  margin-bottom: 20px;
+}
+.risk-inner p {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.85;
+  margin-bottom: 10px;
+}
+.risk-inner strong { color: var(--text-mid); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy);
+  padding: 64px 0 32px;
+}
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand .logo-f {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--sand);
+  letter-spacing: 0.01em;
+  margin-bottom: 14px;
+  display: block;
+}
+.footer-brand .logo-f .dot { color: var(--accent); }
+.footer-brand p {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(241,238,230,0.28);
+  line-height: 1.75;
+}
+.footer-col h4 {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(241,238,230,0.28);
+  margin-bottom: 16px;
+  font-family: 'Manrope', sans-serif;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 9px; }
+.footer-col a {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(241,238,230,0.35);
+  text-decoration: none;
+  font-family: 'Manrope', sans-serif;
+  transition: color 0.15s;
+}
+.footer-col a:hover { color: rgba(241,238,230,0.7); }
+.footer-bottom {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px 48px 0;
+  border-top: 1px solid rgba(241,238,230,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-bottom p { font-size: 11px; color: rgba(241,238,230,0.2); font-family: 'Manrope', sans-serif; }
+
+/* ─── TRUST LINE ─── */
+.trust-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  font-weight: 400;
+  font-family: 'Manrope', sans-serif;
+}
+.trust-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px rgba(26,122,101,0.6);
+}
+
+/* ─── DIVIDER ─── */
+.rule { border: none; border-top: 1px solid var(--border); }
+
+/* ─── ANIMATIONS ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s cubic-bezier(0.22, 0.08, 0.36, 1), transform 0.55s cubic-bezier(0.22, 0.08, 0.36, 1);
+}
+.fade-up.in { opacity: 1; transform: none; }
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 920px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { border-left: none; border-top: 1px solid var(--border); }
+  .hero-left { padding: 60px 24px 48px; }
+  .how-grid, .about-inner, .contact-grid { grid-template-columns: 1fr; }
+  .pitches-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-links { display: none; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+  .section-sub { text-align: left; max-width: 100%; }
+  .hero-h1 { font-size: clamp(32px, 7vw, 56px); }
+}
+</style>
+</head>
+<body>
+
+<div class="risk-banner">
+  Don't invest unless you're prepared to lose all the money you invest. High-risk investment. <a href="#">Learn more →</a>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">crowd<span class="dot">.</span>angels</a>
+    <ul class="nav-links">
+      <li><a href="#investments">Investments</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#">IF-ISA</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn-nav-ghost">Log in</a>
+      <a href="#" class="btn-nav-solid">Get started →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- LEFT: headline + CTA -->
+  <div class="hero-left">
+    <div class="hero-tag fade-up">FCA Authorised · Ref. 176508 · Since 1995</div>
+    <h1 class="hero-h1 fade-up delay-1">
+      Invest in<br>UK companies.<br>Earn up to <span class="num">7%.</span>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Crowd for Angels connects investors with high-quality UK companies raising through Shares and Crowd Bonds. Tax-free returns available via IF-ISA. Capital at risk.
+    </p>
+    <div class="hero-ctas fade-up delay-3">
+      <a href="#investments" class="cta-main">View Investments →</a>
+      <a href="#how" class="cta-outline">How it works</a>
+    </div>
+    <div class="trust-line fade-up delay-4">
+      <div class="trust-dot"></div>
+      <span>Established 1995 · City of London · FCA regulated · Capital at risk</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: dark data terminal panel -->
+  <div class="hero-right fade-up delay-2">
+    <div class="terminal-header">
+      <span class="terminal-title">crowd.angels / live data</span>
+      <span class="terminal-live"><span class="live-dot"></span>LIVE</span>
+    </div>
+
+    <div class="terminal-rows">
+      <div class="t-row">
+        <span class="t-row-label">Max Crowd Bond return</span>
+        <span class="t-row-val t-val-amber">7.00%<span class="t-row-badge t-badge-amber">IF-ISA</span></span>
+      </div>
+      <div class="t-row">
+        <span class="t-row-label">SEIS tax relief</span>
+        <span class="t-row-val t-val-teal">50.00%<span class="t-row-badge t-badge-teal">SEIS</span></span>
+      </div>
+      <div class="t-row">
+        <span class="t-row-label">EIS tax relief</span>
+        <span class="t-row-val t-val-teal">30.00%<span class="t-row-badge t-badge-teal">EIS</span></span>
+      </div>
+      <div class="t-row">
+        <span class="t-row-label">Minimum investment</span>
+        <span class="t-row-val t-val-sand">£25.00</span>
+      </div>
+      <div class="t-row">
+        <span class="t-row-label">Highest bond rate active</span>
+        <span class="t-row-val t-val-amber">12.00%</span>
+      </div>
+      <div class="t-row">
+        <span class="t-row-label">Platform established</span>
+        <span class="t-row-val t-val-sand">1995</span>
+      </div>
+    </div>
+
+    <div class="terminal-foot">
+      FCA Authorised &amp; Regulated · Company 03064807<br>
+      Ref. 176508 · Capital at risk · Not FSCS protected
+    </div>
+  </div>
+</section>
+
+<!-- PRESS -->
+<div class="press-section">
+  <div class="press-inner">
+    <span class="press-lbl">Featured in</span>
+    <div class="press-names">
+      <span class="press-n">Forbes</span>
+      <span class="press-n">The Guardian</span>
+      <span class="press-n">City A.M.</span>
+      <span class="press-n">CoinTelegraph</span>
+      <span class="press-n">The Telegraph</span>
+      <span class="press-n">Yahoo Finance</span>
+    </div>
+  </div>
+</div>
+
+<!-- INVESTMENTS -->
+<section class="section" id="investments">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-left">
+        <p class="section-eyebrow">Investment Opportunities</p>
+        <h2 class="section-h2">Recent Pitches</h2>
+      </div>
+      <p class="section-sub">Showing completed pitches for reference. Register to access live investment opportunities.</p>
+    </div>
+    <div class="filter-row fade-up delay-1">
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterPitches('all', this)">All Pitches</button>
+        <button class="filter-btn" onclick="filterPitches('bond', this)">Crowd Bonds</button>
+        <button class="filter-btn" onclick="filterPitches('share', this)">Share Offerings</button>
+      </div>
+      <span class="filter-count" id="pitch-count">6 pitches</span>
+    </div>
+    <div class="pitches-grid">
+      <div class="pitch-card fade-up" data-type="bond">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-bond">Crowd Bond</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">Verditek PLC</div>
+          <div class="card-desc">AIM-listed clean tech energy solutions company. Secured bond with floating charge on company assets.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£500k</span></div>
+            <div class="metric-box"><span class="lbl">Rate</span><span class="val">7%</span></div>
+            <div class="metric-box"><span class="lbl">Term</span><span class="val">2yr</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pitch-card fade-up delay-1" data-type="bond">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-bond">Crowd Bond</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">Phenomenon One Comms</div>
+          <div class="card-desc">Profitable web-based telecoms company. Interest and capital paid quarterly over 1-year term.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£250k</span></div>
+            <div class="metric-box"><span class="lbl">Rate</span><span class="val">8%</span></div>
+            <div class="metric-box"><span class="lbl">Term</span><span class="val">1yr</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pitch-card fade-up delay-2" data-type="bond">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-bond">Crowd Bond</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">Explanar Ltd</div>
+          <div class="card-desc">World-renowned patented golf training aid. Patented internationally, distributed globally in pro markets.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£50k</span></div>
+            <div class="metric-box"><span class="lbl">Rate</span><span class="val">12%</span></div>
+            <div class="metric-box"><span class="lbl">Term</span><span class="val">2yr</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pitch-card fade-up" data-type="share">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-share">Share Offering</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">Green Miles Tech</div>
+          <div class="card-desc">World's first carbon-negative permeable pavement. 5–8% cheaper than conventional alternatives.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£100k</span></div>
+            <div class="metric-box"><span class="lbl">Equity</span><span class="val">25%</span></div>
+            <div class="metric-box"><span class="lbl">Relief</span><span class="val">SEIS</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pitch-card fade-up delay-1" data-type="share">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-share">Share Offering</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">eSale (UK) Ltd.</div>
+          <div class="card-desc">Profitable online estate agency covering England & Wales. Professional team, fees from just £495.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£90k</span></div>
+            <div class="metric-box"><span class="lbl">Equity</span><span class="val">23%</span></div>
+            <div class="metric-box"><span class="lbl">Relief</span><span class="val">EIS</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pitch-card fade-up delay-2" data-type="share">
+        <div class="card-strip"></div>
+        <div class="card-body">
+          <div class="card-header">
+            <span class="type-chip chip-share">Share Offering</span>
+            <div class="status-dot"></div>
+          </div>
+          <div class="card-name">Videogram Worldwide</div>
+          <div class="card-desc">Revolutionary greeting card, gifting & print-on-demand platform. Multiple digital brands.</div>
+          <div class="card-metrics">
+            <div class="metric-box"><span class="lbl">Raise</span><span class="val">£100k</span></div>
+            <div class="metric-box"><span class="lbl">Equity</span><span class="val">20.1%</span></div>
+            <div class="metric-box"><span class="lbl">Relief</span><span class="val">SEIS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-left">
+        <p class="section-eyebrow">How it Works</p>
+        <h2 class="section-h2">Two Investment Paths</h2>
+      </div>
+      <p class="section-sub">Whether you want predictable income from bonds or growth potential from equity, we've got you covered.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card bonds fade-up">
+        <div class="how-card-num">01</div>
+        <div class="how-card-tag">Fixed Income</div>
+        <h3>Crowd Bonds</h3>
+        <ul class="how-list">
+          <li>Up to 7% interest per annum, secured on assets</li>
+          <li>Short terms — many under 2 years</li>
+          <li>Tax-free via Innovative Finance ISA wrapper</li>
+          <li>Resale marketplace for liquidity</li>
+          <li>Quarterly interest payments on select pitches</li>
+        </ul>
+        <a href="#" class="how-card-cta">Explore Bonds →</a>
+      </div>
+      <div class="how-card shares fade-up delay-1">
+        <div class="how-card-num">02</div>
+        <div class="how-card-tag">Equity Growth</div>
+        <h3>Share Offerings</h3>
+        <ul class="how-list">
+          <li>Access exciting early-stage UK companies</li>
+          <li>Invest from £25 — card, bank transfer or Bitcoin</li>
+          <li>Up to 50% tax relief via SEIS or 30% via EIS</li>
+          <li>Face-to-face due diligence on every company</li>
+          <li>Loss relief against income tax if investment fails</li>
+        </ul>
+        <a href="#" class="how-card-cta">Explore Shares →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section" id="team">
+  <div class="section-inner">
+    <div class="section-header fade-up">
+      <div class="section-left">
+        <p class="section-eyebrow">The Team</p>
+        <h2 class="section-h2">People You Can Trust</h2>
+      </div>
+      <p class="section-sub">Our team combines decades of financial markets expertise with FCA regulatory experience.</p>
+    </div>
+    <div class="team-grid fade-up delay-1">
+      <div class="team-card">
+        <div class="avatar av-navy">PM</div>
+        <div class="team-name">Phil Millar</div>
+        <div class="team-role">Director</div>
+        <div class="team-bio">FCA-approved. CME Group, HSBC, Irish Stock Exchange. MiFID II, EMIR, Dodd-Frank specialist.</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-teal">RG</div>
+        <div class="team-name">Richard Gill</div>
+        <div class="team-role">Compliance Officer</div>
+        <div class="team-bio">CFA charterholder. King's College London. FCA compliance and smaller companies research.</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-terra">KD</div>
+        <div class="team-name">Kenrick De Nazareth</div>
+        <div class="team-role">Financial Officer</div>
+        <div class="team-bio">BA Hons Business & Finance, Westminster. Investment analysis background.</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar av-slate">AC</div>
+        <div class="team-name">Anabel Castillo</div>
+        <div class="team-role">Financial Analyst</div>
+        <div class="team-bio">MSc Financial Management, Northumbria. International treasury and finance experience.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-banner" id="about">
+  <div class="about-inner">
+    <div>
+      <h2 class="about-tagline fade-up">We do it well.<br>We do it <span class="hl">right.</span></h2>
+      <p class="about-p fade-up delay-1">
+        Crowd for Angels is an established UK crowdfunding platform based in the City of London, authorised and regulated by the FCA. Incorporated in 1995, we have a long track record raising funds for UK companies.
+      </p>
+      <p class="about-p fade-up delay-2">
+        We make a point of meeting every company face-to-face before listing — flying worldwide to achieve this important standard. We marry high-tech with accountancy heritage.
+      </p>
+      <span class="fca-badge fade-up delay-3">🏛 FCA Authorised · Company 03064807 · Ref. 176508</span>
+    </div>
+    <div class="about-numbers fade-up delay-1">
+      <div class="about-num">
+        <div class="n n-sand">1995</div>
+        <div class="l">Year Established</div>
+      </div>
+      <div class="about-num">
+        <div class="n n-acc">7%</div>
+        <div class="l">Max Bond Return p.a.</div>
+      </div>
+      <div class="about-num">
+        <div class="n n-teal">50%</div>
+        <div class="l">Max Tax Relief (SEIS)</div>
+      </div>
+      <div class="about-num">
+        <div class="n n-warm">£25</div>
+        <div class="l">Minimum Investment</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-left fade-up">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you — whether you're an investor, company founder, or financial advisor.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">📍</div>
+            <div class="c-text">
+              <div class="lbl">Address</div>
+              <div class="val">The Fuel Tank — B110, 8–12 Creekside Deptford, SE8 3DX, London</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">📞</div>
+            <div class="c-text">
+              <div class="lbl">Phone</div>
+              <div class="val"><a href="tel:+447432304731">+44 7432 304731</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">✉️</div>
+            <div class="c-text">
+              <div class="lbl">Email</div>
+              <div class="val"><a href="mailto:info@crowdforangels.com">info@crowdforangels.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="join-card fade-up delay-1">
+        <h3>Start investing today</h3>
+        <p>Open a free account in minutes. Access the UK's finest early-stage investment opportunities in shares, bonds and ISA-wrapped structures.</p>
+        <div class="join-btns">
+          <a href="#" class="btn-acc">Create Free Account</a>
+          <a href="#" class="btn-sand-ghost">Learn about IF-ISA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK WARNING -->
+<section class="risk-section">
+  <div class="risk-inner">
+    <h2>Risk Warning</h2>
+    <p><strong>Investment Risks:</strong> Investing in small companies involves many risks including illiquidity, loss of investment and equity dilution. Only invest as part of a diversified portfolio. Capital is at risk.</p>
+    <p><strong>No FSCS Protection:</strong> Investments on this platform are not covered by the Financial Services Compensation Scheme.</p>
+    <p><strong>Tax Relief:</strong> SEIS and EIS tax relief depends on individual circumstances and may change. Seek independent tax advice before proceeding.</p>
+    <p>Approved as a Financial Promotion by Crowd for Angels (UK) Limited (Company No. <strong>03064807</strong>), authorised and regulated by the FCA (Ref. <strong>176508</strong>).</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-f">crowd<span class="dot">.</span>angels</span>
+      <p>UK crowdfunding platform authorised and regulated by the FCA (ref. 176508). Company No. 03064807. Incorporated 1995.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Investors</h4>
+      <ul>
+        <li><a href="#">Investments</a></li>
+        <li><a href="#">Crowd Bonds</a></li>
+        <li><a href="#">IF-ISA</a></li>
+        <li><a href="#">SEIS / EIS</a></li>
+        <li><a href="#">Investor Fees</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Companies</h4>
+      <ul>
+        <li><a href="#">Raise Funds</a></li>
+        <li><a href="#">Fees</a></li>
+        <li><a href="#">Due Diligence</a></li>
+        <li><a href="#">Build Pitch</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Risk Warning</a></li>
+        <li><a href="#">GDPR</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Crowd for Angels (UK) Limited. All rights reserved.</p>
+    <p>FCA Authorised · Ref. 176508 · Capital at risk</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Filter pitches
+const counts = { all: 6, bond: 3, share: 3 };
+function filterPitches(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  let shown = 0;
+  document.querySelectorAll('.pitch-card').forEach(card => {
+    const visible = type === 'all' || card.dataset.type === type;
+    card.style.display = visible ? '' : 'none';
+    if (visible) shown++;
+  });
+  document.getElementById('pitch-count').textContent = shown + ' pitch' + (shown !== 1 ? 'es' : '');
+}
+</script>
+</body>
+</html>

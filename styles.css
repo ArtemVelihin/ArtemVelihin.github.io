@@ -17,7 +17,7 @@
   --fs-lg: 20px;
   --fs-xl: 22px;
   --fs-xxl: 26px;
-  --lh-copy: 1.65;
+  --lh-copy: 1.5;
   --cobalt:        #2451D1;
   --cobalt-mid:    #3563E9;
   --cobalt-pale:   #EEF3FF;
@@ -62,7 +62,7 @@ html,body{margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--sans);
-  font-size:var(--base-size);line-height:1.65;
+  font-size:var(--base-size);line-height:var(--lh-copy)       ;
   color:var(--text);background:var(--bg);
   -webkit-font-smoothing:antialiased;
 }

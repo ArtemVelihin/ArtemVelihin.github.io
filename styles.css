@@ -12,7 +12,7 @@
   --type-md: 16px; /* primary body / copy */
   --type-lg: 20px;
   --type-xl: 26px; /* large headings */
-  --line-height: 1.6;
+  --line-height: 1.4;
 
   /* legacy aliases (map existing variables to the simplified system) */
   --base-size: var(--type-md);

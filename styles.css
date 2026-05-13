@@ -521,54 +521,6 @@ button{font:inherit;cursor:pointer}
   .adv__grid{grid-template-columns:1fr}
 }
 
-/* ────────── PHONE CTA BOX ────────── */
-.ctabox{padding:80px 0;background:var(--bg)}
-.ctabox__inner{
-  display:grid;grid-template-columns:.45fr .55fr;
-  border-radius:var(--r-xl);overflow:hidden;
-  background:var(--scarlet);color:#fff;
-  box-shadow:var(--shadow-scarlet);
-  position:relative;
-}
-.ctabox__inner::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(circle at 100% 100%, rgba(11,32,79,.30), transparent 50%);
-  z-index:0;
-}
-.ctabox__photo{margin:0;background:var(--navy);position:relative;z-index:1}
-.ctabox__photo img{width:100%;height:100%;object-fit:cover;min-height:280px;filter:contrast(1.05) saturate(.9)}
-.ctabox__copy{
-  position:relative;z-index:1;
-  padding:56px 56px 56px 64px;display:flex;flex-direction:column;justify-content:center;
-}
-.ctabox__icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:64px;height:64px;border-radius:50%;
-  border:2px solid rgba(255,255,255,.35);color:#fff;
-  margin-bottom:24px;
-}
-.ctabox__pre{
-  font-family:var(--mono);font-size:11px;letter-spacing:.18em;
-  text-transform:uppercase;color:rgba(255,255,255,.78);font-weight:700;
-  margin:0 0 10px;
-}
-.ctabox__num{
-  font-family:var(--sans);font-weight:800;
-  font-size:clamp(34px,4.4vw,56px);letter-spacing:-.025em;
-  line-height:1;margin:0 0 14px;
-}
-.ctabox__num a{color:#fff;text-decoration:none}
-.ctabox__hint{
-  margin:0;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
-  color:rgba(255,255,255,.75);font-weight:600;
-}
-
-@media (max-width:860px){
-  .ctabox__inner{grid-template-columns:1fr}
-  .ctabox__photo img{min-height:200px}
-  .ctabox__copy{padding:40px 32px}
-}
-
 /* ────────── ADVISERS ────────── */
 .advisers{padding:120px 0;background:var(--bg)}
 .advisers__grid{
@@ -608,51 +560,6 @@ button{font:inherit;cursor:pointer}
 @media (max-width:980px){
   .advisers{padding:80px 0}
   .advisers__grid{grid-template-columns:1fr}
-}
-
-/* ────────── REGULATORY TRUST ────────── */
-.reg{
-  padding:120px 0;background:var(--ink);color:#fff;
-  position:relative;overflow:hidden;
-}
-.reg::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(circle at 100% 0%, rgba(36,81,209,.28), transparent 45%),
-    radial-gradient(circle at 0% 100%, rgba(230,57,70,.10), transparent 45%);
-}
-.reg .container{position:relative}
-.reg__grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:var(--r-lg);overflow:hidden;
-}
-.regcard{
-  background:var(--ink);
-  padding:32px 28px;text-decoration:none;color:#fff;
-  display:flex;flex-direction:column;gap:12px;
-  transition:background .2s;
-}
-.regcard:not(.regcard--static):hover{
-  background:linear-gradient(135deg, rgba(36,81,209,.28), transparent);
-}
-.regcard__lbl{
-  font-family:var(--mono);font-size:10px;letter-spacing:.22em;
-  text-transform:uppercase;color:#9BB4FF;font-weight:700;
-}
-.regcard__val{
-  font-family:var(--sans);font-weight:700;font-size:22px;
-  letter-spacing:-.01em;line-height:1.2;color:#fff;
-}
-.regcard__sub{
-  font-size:13px;color:rgba(255,255,255,.65);margin-top:auto;
-  padding-top:18px;
-}
-.regcard:not(.regcard--static) .regcard__sub{color:#FBA5AD;font-weight:600}
-
-@media (max-width:860px){
-  .reg__grid{grid-template-columns:1fr}
 }
 
 /* ────────── CONTACT ────────── */
